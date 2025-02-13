@@ -26,8 +26,8 @@ RSpec.describe Registrant do
     registrant_1 = Registrant.new('Bruce', 18, true )
     registrant_2 = Registrant.new('Penny', 15 )
 
-    expect(registrant_1.permit).to eq(true)
-    expect(registrant_2.permit).to eq(false)
+    expect(registrant_1.permit?).to eq(true)
+    expect(registrant_2.permit?).to eq(false)
   end
   it "has licence data" do
     registrant_1 = Registrant.new('Bruce', 18, true )
@@ -41,12 +41,13 @@ RSpec.describe Registrant do
 
    registrant_2.earn_permit
 
-   expect(registrant_2.permit).to eq(true)
+   expect(registrant_2.permit?).to eq(true)
   end
+end
 
 
   
 
 
 
-end
+
