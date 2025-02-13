@@ -1,4 +1,6 @@
 require 'spec_helper'
+require './lib/facility'
+require './lib/vehicle'
 
 RSpec.describe Facility do
   before(:each) do
@@ -11,6 +13,8 @@ RSpec.describe Facility do
       expect(@facility.address).to eq('2855 Tremont Place Suite 118 Denver CO 80205')
       expect(@facility.phone).to eq('(720) 865-4600')
       expect(@facility.services).to eq([])
+      expect(@facility.registred_vehicles). to eq([])
+      expect(@facility.collected_fees). to eq([])
     end
   end
 
@@ -21,6 +25,11 @@ RSpec.describe Facility do
       @facility.add_service('Renew Drivers License')
       @facility.add_service('Vehicle Registration')
       expect(@facility.services).to eq(['New Drivers License', 'Renew Drivers License', 'Vehicle Registration'])
+    end
+  end
+
+  describe 
+
     end
   end
 end
