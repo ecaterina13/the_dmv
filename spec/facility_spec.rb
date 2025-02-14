@@ -102,30 +102,36 @@ RSpec.describe Facility do
     end
  end
 
-  describe '# administer_road_test '
+  describe '#administer_road_test ' do
     it 'administers road test to registrant_1' do 
       @facility_1.administer_written_test(@registrant_1)
+
       @facility_1.administer_road_test(@registrant_1)
 
       expect(@registrant_1.license_data[:license]). to eq(true)
     end
+
     it 'administers road test to registrant_2' do
       @registrant_2.earn_permit
       @facility_1.administer_written_test(@registrant_2)
+
       @facility_1.administer_road_test(@registrant_2)
 
       expect(@registrant_2.license_data[:license]).to eq(true)
     end
   end
 
-  describe '#renew license' do
-   it 'can renew license for registrant_1' do
-     @facility_1.administer_written_test(@registrant_1)
-     @facility_1.administer_road_test(@registrant_1)
+  describe '#renew_license' do
+    it 'can renew a license for a registrant' do
+      @facility_1.administer_written_test(@registrant_1)
+      @facility_1.administer_road_test(@registrant_1)
 
-    expect(@registrant_1.license_data[:renewed]).to eq(true)
-   end
- end
+      @facility_1.renew_license(@registrant_1)
+
+      expect(@registrant_1.license_data[:renewed]).to eq(true)
+    end
+  end
+end
 
 
 
