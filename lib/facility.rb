@@ -59,7 +59,7 @@ class Facility
     end
   end
 
-  def can_renew_license(registrant)
+  def renew_license(registrant)
     if registrant.license_data[:written] && registrant.license_data[:license]
       registrant.license_data[:renewed] = true
     else
