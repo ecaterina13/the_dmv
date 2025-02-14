@@ -63,7 +63,7 @@ class Facility
     if registrant.license_data[:written] && registrant.license_data[:license]
       registrant.license_data[:renewed] = true
     else
-      registrant.license_data[:renewed] = false
+      registrant.license_data[:renewed] = false 
     end
   end
 end
