@@ -18,6 +18,7 @@ class Facility
   def register_vehicle(vehicle)
     vehicle.registration_date = Date.today
     set_plate_type(vehicle)
+    add_vehicle_fees(vehicle)
     @registered_vehicles << vehicle  
     
   end
@@ -32,16 +33,38 @@ class Facility
     end
   end
 
+  def add_vehicle_fees(vehicle)
+    if vehicle.plate_type == :ev
+      @collected_fees += 200
+    elsif vehicle.plate_type == :antique
+      @collected_fees += 25
+    else 
+      @collected_fees += 100
+     end
+  end
+ 
+  def administer_written_test(registrant)
+    if registrant.age >= 16 && registrant.permit?
+      registrant.license_data[:written] = true
+    else
+      registrant.license_data[:written] = false
+    end
+  end
 
+  def administer_road_test(registrant)
+    if registrant.license_data[:written] == true
+      registrant.license_data[:license] = true
+    else
+      registrant.license_data[:license] = false
+    end
+  end
 
-
-  # def count_collected_fees
-  #   @collected_fees += fees
-  #   end
-
-  #   def plate_type
-  #     @plate_type = :regular
-  #   end
-  # end
+  def can_renew_license(registrant)
+    if registrant.license_data[:written] && registrant.license_data[:license]
+      registrant.license_data[:renewed] = true
+    else
+      registrant.license_data[:renewed] = false
+    end
+  end
 end
 
