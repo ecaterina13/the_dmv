@@ -5,7 +5,9 @@ class VehicleFactory
 
   def create_vehicles(registrations)
     registrations.map do |registration|
-      vehicle = Vehicle.new(vin: registration[:vin], make: registration[:make], model: registration[:model], year: registration[:year], engine: registration[:engine])
+      vehicle = Vehicle.new({vin: registration[:vin_1_10], make: registration[:make], 
+      model: registration[:model], year: registration[:year], engine: :ev})
+      binding.pry
     end
   end
 end
