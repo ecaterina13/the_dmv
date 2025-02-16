@@ -26,13 +26,34 @@ RSpec.describe VehicleFactory do
 
       expect(vehicle).to be_an_instance_of(Vehicle)
     end
-
-    xit "sets the appropriate values for a vehicle" do
-      vehicle = @factory.create_vehicles(@wa_ev_registrations).first
-
-      expect(vehicle.vin).to eq("1N4BZ0CP3G")
-      expect(vehicle.year).to eq(2016)
-      expect(vehicle.registration_date).to eq(Date.new(2024,2,27))
-    end
   end
 end
+
+#     describe '#create_vehicles' do
+#     it 'creates vehicle objects from registration data' do
+#       factory = VehicleFactory.new
+#       wa_ev_registrations = [
+#         { vin_1_10: "JTDKN3DP8D", make: "TOYOTA", model: "Prius Plug-in", model_year: "2013" },
+#         { vin_1_10: "1G1RD6E47D", make: "CHEVROLET", model: "Volt", model_year: "2013" }
+#       ]
+
+#       vehicles = factory.create_vehicles(wa_ev_registrations)
+
+#       expect(vehicles.length).to eq(2)
+#       expect(vehicles.first).to be_an_instance of(VehicleFactory)
+#       expect(vehicles.first.vin).to eq("JTDKN3DP8D")
+#       expect(vehicles.first.make).to eq("TOYOTA")
+#       expect(vehicles.first.model).to eq("Prius Plug-in")
+#       expect(vehicles.first.year).to eq("2013")
+#       expect(vehicles.first.engine).to eq(:ev)
+#     end
+#   end
+# end
+    # it "sets the appropriate values for a vehicle" do
+    #   vehicle = @factory.create_vehicles(@wa_ev_registrations).first
+
+    #   expect(vehicle.vin).to eq("1N4BZ0CP3G")
+    #   expect(vehicle.year).to eq(2016)
+    #   expect(vehicle.registration_date).to eq(Date.new(2024,2,27))
+    # end
+  
