@@ -18,42 +18,25 @@ RSpec.describe VehicleFactory do
     it "returns an Array" do
       vehicles = @factory.create_vehicles(@wa_ev_registrations)
 
-      expect(vehicles).to be_an_instance_of(Array)
-    end
+      expect(vehicles).to be_an_instance_of(Array) 
 
-    it "returns an Array of vehicles" do
-      vehicle = @factory.create_vehicles(@wa_ev_registrations).first
+      expect(vehicles.first).to be_an_instance_of(Vehicle)
+      expect(vehicles.first.vin).to eq("1N4BZ0CP3G")
+      expect(vehicles.first.year).to eq(2016)
+      expect(vehicles.first.make).to eq("NISSAN")
+      expect(vehicles.first.model).to eq("Leaf")
+      expect(vehicles.first.engine).to eq(:ev)
 
-      expect(vehicle).to be_an_instance_of(Vehicle)
+      expect(vehicles[1]).to be_an_instance_of(Vehicle)
+      expect(vehicles[1].vin).to eq("5YJ3E1EB7K")
+      expect(vehicles[1].year).to eq(2019)
+      expect(vehicles[1].make).to eq("TESLA")
+      expect(vehicles[1].model).to eq("Model 3")
+      expect(vehicles[1].engine).to eq(:ev)
     end
+    
   end
 end
 
-#     describe '#create_vehicles' do
-#     it 'creates vehicle objects from registration data' do
-#       factory = VehicleFactory.new
-#       wa_ev_registrations = [
-#         { vin_1_10: "JTDKN3DP8D", make: "TOYOTA", model: "Prius Plug-in", model_year: "2013" },
-#         { vin_1_10: "1G1RD6E47D", make: "CHEVROLET", model: "Volt", model_year: "2013" }
-#       ]
 
-#       vehicles = factory.create_vehicles(wa_ev_registrations)
-
-#       expect(vehicles.length).to eq(2)
-#       expect(vehicles.first).to be_an_instance of(VehicleFactory)
-#       expect(vehicles.first.vin).to eq("JTDKN3DP8D")
-#       expect(vehicles.first.make).to eq("TOYOTA")
-#       expect(vehicles.first.model).to eq("Prius Plug-in")
-#       expect(vehicles.first.year).to eq("2013")
-#       expect(vehicles.first.engine).to eq(:ev)
-#     end
-#   end
-# end
-    # it "sets the appropriate values for a vehicle" do
-    #   vehicle = @factory.create_vehicles(@wa_ev_registrations).first
-
-    #   expect(vehicle.vin).to eq("1N4BZ0CP3G")
-    #   expect(vehicle.year).to eq(2016)
-    #   expect(vehicle.registration_date).to eq(Date.new(2024,2,27))
-    # end
-  
+     
