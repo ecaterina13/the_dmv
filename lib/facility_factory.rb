@@ -20,3 +20,4 @@ class FacilityFactory
     end
   end
 end
+
