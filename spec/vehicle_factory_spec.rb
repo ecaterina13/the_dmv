@@ -33,8 +33,15 @@ RSpec.describe VehicleFactory do
       expect(vehicles[1].make).to eq("TESLA")
       expect(vehicles[1].model).to eq("Model 3")
       expect(vehicles[1].engine).to eq(:ev)
+    end 
+  end
+
+  describe '#count_vehicles_by_year' do
+    it 'returns the count of registered vehicles for 2020' do
+      count = @factory.count_vehicles_by_year(@wa_ev_registrations, 2020)
+      expect(count).to be_a(Integer)
+      expect(count).to be >= 0  # Ensuring it returns a valid count
     end
-    
   end
 end
 
